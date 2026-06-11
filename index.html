@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cook Period Planner — Cheffelo</title>
   <style>
@@ -389,49 +389,21 @@
     .legend-item { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--text-secondary); }
     .legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
   </style>
-  <script src="./Cook Period Planner — Cheffelo_files/html2canvas.min.js"></script>
-  <script src="./Cook Period Planner — Cheffelo_files/supabase-js@2"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 
 <!-- ═══════════════════ LANDING ═══════════════════ -->
-<div id="landing" style="display: block; min-height: 100vh; background: rgb(250, 249, 240); font-family: Geigy, system-ui, sans-serif;">
+<div id="landing" style="display:none; min-height:100vh; background:#FAF9F0; font-family:'Geigy',system-ui,sans-serif;">
   <div style="max-width:680px; margin:0 auto; padding:64px 24px;">
-    <h1 style="font-family:&#39;Serrif Compressed&#39;,system-ui,serif; font-size:36px; color:#513620; margin-bottom:6px;">Cook Period Planner</h1>
+    <h1 style="font-family:'Serrif Compressed',system-ui,serif; font-size:36px; color:#513620; margin-bottom:6px;">Cook Period Planner</h1>
     <p style="font-size:14px; color:#8C7462; margin-bottom:48px;">Select your team's board or create a new one.</p>
 
-    <div id="boards-list" style="display:flex; flex-direction:column; gap:10px; margin-bottom:24px;">
-      <div style="background:#F2EFE1;border:1px solid #E0DDCA;border-radius:10px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;transition:background .15s;" onmouseover="this.style.background=&#39;#E0DDCA&#39;" onmouseout="this.style.background=&#39;#F2EFE1&#39;">
-        <span onclick="enterBoard(&#39;7e58c708-bed7-4d75-9024-2452ed015ab7&#39;,&#39;FTX&#39;)" style="font-size:15px;font-weight:600;color:#513620;cursor:pointer;flex:1;">FTX</span>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <span onclick="enterBoard(&#39;7e58c708-bed7-4d75-9024-2452ed015ab7&#39;,&#39;FTX&#39;)" style="font-size:12px;color:#8C7462;cursor:pointer;">Open →</span>
-          <button onclick="event.stopPropagation();deleteBoard(&#39;7e58c708-bed7-4d75-9024-2452ed015ab7&#39;,&#39;FTX&#39;)" style="background:none;border:none;cursor:pointer;font-size:16px;color:#8C7462;line-height:1;padding:2px 4px;border-radius:4px;" title="Delete board" onmouseover="this.style.color=&#39;#F64C14&#39;" onmouseout="this.style.color=&#39;#8C7462&#39;">×</button>
-        </div>
-      </div>
-      <div style="background:#F2EFE1;border:1px solid #E0DDCA;border-radius:10px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;transition:background .15s;" onmouseover="this.style.background=&#39;#E0DDCA&#39;" onmouseout="this.style.background=&#39;#F2EFE1&#39;">
-        <span onclick="enterBoard(&#39;06214698-053d-4020-aab7-6b8d37961c18&#39;,&#39;Data Platform Team&#39;)" style="font-size:15px;font-weight:600;color:#513620;cursor:pointer;flex:1;">Data Platform Team</span>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <span onclick="enterBoard(&#39;06214698-053d-4020-aab7-6b8d37961c18&#39;,&#39;Data Platform Team&#39;)" style="font-size:12px;color:#8C7462;cursor:pointer;">Open →</span>
-          <button onclick="event.stopPropagation();deleteBoard(&#39;06214698-053d-4020-aab7-6b8d37961c18&#39;,&#39;Data Platform Team&#39;)" style="background:none;border:none;cursor:pointer;font-size:16px;color:#8C7462;line-height:1;padding:2px 4px;border-radius:4px;" title="Delete board" onmouseover="this.style.color=&#39;#F64C14&#39;" onmouseout="this.style.color=&#39;#8C7462&#39;">×</button>
-        </div>
-      </div>
-      <div style="background: rgb(242, 239, 225); border: 1px solid rgb(224, 221, 202); border-radius: 10px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between; transition: background 0.15s;" onmouseover="this.style.background=&#39;#E0DDCA&#39;" onmouseout="this.style.background=&#39;#F2EFE1&#39;">
-        <span onclick="enterBoard(&#39;4e2306ac-b93e-4cac-b6e1-93f4fc2cdb39&#39;,&#39;CX Team&#39;)" style="font-size:15px;font-weight:600;color:#513620;cursor:pointer;flex:1;">CX Team</span>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <span onclick="enterBoard(&#39;4e2306ac-b93e-4cac-b6e1-93f4fc2cdb39&#39;,&#39;CX Team&#39;)" style="font-size:12px;color:#8C7462;cursor:pointer;">Open →</span>
-          <button onclick="event.stopPropagation();deleteBoard(&#39;4e2306ac-b93e-4cac-b6e1-93f4fc2cdb39&#39;,&#39;CX Team&#39;)" style="background:none;border:none;cursor:pointer;font-size:16px;color:#8C7462;line-height:1;padding:2px 4px;border-radius:4px;" title="Delete board" onmouseover="this.style.color=&#39;#F64C14&#39;" onmouseout="this.style.color=&#39;#8C7462&#39;">×</button>
-        </div>
-      </div>
-      <div style="background:#F2EFE1;border:1px solid #E0DDCA;border-radius:10px;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;transition:background .15s;" onmouseover="this.style.background=&#39;#E0DDCA&#39;" onmouseout="this.style.background=&#39;#F2EFE1&#39;">
-        <span onclick="enterBoard(&#39;9ef3f3de-3efe-4386-8ab8-9f7d6ecf5967&#39;,&#39;Growth Team&#39;)" style="font-size:15px;font-weight:600;color:#513620;cursor:pointer;flex:1;">Growth Team</span>
-        <div style="display:flex;align-items:center;gap:12px;">
-          <span onclick="enterBoard(&#39;9ef3f3de-3efe-4386-8ab8-9f7d6ecf5967&#39;,&#39;Growth Team&#39;)" style="font-size:12px;color:#8C7462;cursor:pointer;">Open →</span>
-          <button onclick="event.stopPropagation();deleteBoard(&#39;9ef3f3de-3efe-4386-8ab8-9f7d6ecf5967&#39;,&#39;Growth Team&#39;)" style="background:none;border:none;cursor:pointer;font-size:16px;color:#8C7462;line-height:1;padding:2px 4px;border-radius:4px;" title="Delete board" onmouseover="this.style.color=&#39;#F64C14&#39;" onmouseout="this.style.color=&#39;#8C7462&#39;">×</button>
-        </div>
-      </div></div>
+    <div id="boards-list" style="display:flex; flex-direction:column; gap:10px; margin-bottom:24px;"></div>
 
     <div style="border-top:1px solid #E0DDCA; padding-top:24px; display:flex; gap:10px; align-items:center;">
-      <input id="new-board-name" class="fi" type="text" placeholder="New board name, e.g. Food Tech" style="flex:1; max-width:320px;" onkeydown="if(event.key===&#39;Enter&#39;)createBoard()">
+      <input id="new-board-name" class="fi" type="text" placeholder="New board name, e.g. Food Tech" style="flex:1; max-width:320px;" onkeydown="if(event.key==='Enter')createBoard()">
       <button class="btn btn-primary" onclick="createBoard()">+ Create board</button>
     </div>
   </div>
@@ -442,7 +414,7 @@
 <div class="header-inner">
   <div class="header-left">
     <h1>Cook Period Planner</h1>
-    <p><button onclick="showLanding()" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:12px;color:rgba(81,54,32,0.6);padding:0;text-decoration:underline;">← Boards</button> · <span id="board-name-label" style="font-weight:600;color:#513620;"></span> · <span id="sync-status" style="font-style:italic;">connecting…</span></p>
+    <p><button onclick="showLanding()" style="background:none;border:none;cursor:pointer;font-family:inherit;font-size:12px;color:rgba(81,54,32,0.6);padding:0;text-decoration:underline;">← Boards</button> &middot; <span id="board-name-label" style="font-weight:600;color:#513620;"></span> &middot; <span id="sync-status" style="font-style:italic;">connecting…</span></p>
   </div>
   <div class="header-actions">
     <div style="position:relative;background:#F7FE28;border-radius:6px;padding:8px 12px;font-size:13px;font-weight:500;color:#513620;cursor:pointer;line-height:1;white-space:nowrap;">
@@ -461,7 +433,7 @@
         <option value="10">10 weeks</option>
       </select>
     </div>
-    <button class="btn btn-dark" onclick="captureImage(this)" title="Save as image" id="capture-btn">📸 Save image</button>
+    <button class="btn btn-dark" onclick="captureImage(this)" title="Save as image" id="capture-btn">&#x1F4F8; Save image</button>
   </div>
 </div>
 </header>
@@ -499,20 +471,20 @@
 </main>
 
 <!-- ═══════════════════ MODAL: Team Member ═══════════════════ -->
-<div class="overlay" id="modal-member" style="display:none;" onclick="overlayClose(event,&#39;modal-member&#39;)">
+<div class="overlay" id="modal-member" style="display:none;" onclick="overlayClose(event,'modal-member')">
   <div class="modal">
     <h2 id="modal-member-title">Add Team Member</h2>
     <div class="fg">
       <label>Name</label>
-      <input class="fi" id="m-name" type="text" placeholder="e.g. Marie Blomdal" onkeydown="if(event.key===&#39;Enter&#39;)saveMember()">
+      <input class="fi" id="m-name" type="text" placeholder="e.g. Marie Blomdal" onkeydown="if(event.key==='Enter')saveMember()">
     </div>
     <div class="fg">
       <label>Disciplines</label>
       <div class="disc-toggle-row">
-        <button class="disc-toggle" data-d="Design" onclick="toggleMemberDisc(this)">Design</button>
+        <button class="disc-toggle" data-d="Design"      onclick="toggleMemberDisc(this)">Design</button>
         <button class="disc-toggle" data-d="Engineering" onclick="toggleMemberDisc(this)">Engineering</button>
-        <button class="disc-toggle" data-d="Product" onclick="toggleMemberDisc(this)">Product</button>
-        <button class="disc-toggle" data-d="Data" onclick="toggleMemberDisc(this)">Data</button>
+        <button class="disc-toggle" data-d="Product"     onclick="toggleMemberDisc(this)">Product</button>
+        <button class="disc-toggle" data-d="Data"        onclick="toggleMemberDisc(this)">Data</button>
       </div>
     </div>
     <div class="fg">
@@ -531,19 +503,19 @@
       </div>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-ghost" onclick="closeModal(&#39;modal-member&#39;)">Cancel</button>
+      <button class="btn btn-ghost" onclick="closeModal('modal-member')">Cancel</button>
       <button class="btn btn-primary" onclick="saveMember()">Save</button>
     </div>
   </div>
 </div>
 
 <!-- ═══════════════════ MODAL: Project ═══════════════════ -->
-<div class="overlay" id="modal-project" style="display:none;" onclick="overlayClose(event,&#39;modal-project&#39;)">
+<div class="overlay" id="modal-project" style="display:none;" onclick="overlayClose(event,'modal-project')">
   <div class="modal">
     <h2 id="modal-project-title">Add Project</h2>
     <div class="fg">
       <label>Project name</label>
-      <input class="fi" id="p-name" type="text" placeholder="e.g. Checkout redesign" onkeydown="if(event.key===&#39;Enter&#39;)document.getElementById(&#39;p-desc&#39;).focus()">
+      <input class="fi" id="p-name" type="text" placeholder="e.g. Checkout redesign" onkeydown="if(event.key==='Enter')document.getElementById('p-desc').focus()">
     </div>
     <div class="fg">
       <label>Description <span style="font-weight:400;text-transform:none;letter-spacing:0;">(optional)</span></label>
@@ -567,14 +539,14 @@
       </select>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-ghost" onclick="closeModal(&#39;modal-project&#39;)">Cancel</button>
+      <button class="btn btn-ghost" onclick="closeModal('modal-project')">Cancel</button>
       <button class="btn btn-primary" id="save-proj-btn" onclick="saveProject()">Add Project</button>
     </div>
   </div>
 </div>
 
 <!-- ═══════════════════ MODAL: Assignment ═══════════════════ -->
-<div class="overlay" id="modal-assign" style="display:none;" onclick="overlayClose(event,&#39;modal-assign&#39;)">
+<div class="overlay" id="modal-assign" style="display:none;" onclick="overlayClose(event,'modal-assign')">
   <div class="modal">
     <h2 id="modal-assign-title">Add Assignee</h2>
     <div class="fg">
@@ -593,7 +565,7 @@
       <div id="a-mismatch-warn" style="display:none; margin-top:8px; font-size:12px; color:#954505; background:#FEF3E2; border:1px solid #CAB20A; border-radius:6px; padding:7px 10px; line-height:1.4;"></div>
     </div>
     <div class="modal-footer">
-      <button class="btn btn-ghost" onclick="closeModal(&#39;modal-assign&#39;)">Cancel</button>
+      <button class="btn btn-ghost" onclick="closeModal('modal-assign')">Cancel</button>
       <button class="btn btn-primary" id="save-assign-btn" onclick="saveAssignment()">Add</button>
     </div>
   </div>
@@ -1307,6 +1279,5 @@
   showLanding();
 </script>
 
-
-
-</body></html>
+</body>
+</html>
